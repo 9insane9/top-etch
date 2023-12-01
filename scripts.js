@@ -1,12 +1,31 @@
-let gridSizeButton = document.querySelector(".set-grid-size");
+let gridSizeButton = document.querySelector(".grid-size-button");
 let container = document.querySelector(".container");
 
 gridSizeButton.addEventListener('click', () => {
-    let gridSize = prompt("Enter grid dimensions", "16");
+    let gridDimension = prompt("Enter grid dimensions", "20");
 
-    for (let i=0; i <= (gridSize * gridSize); i++) {
-        let pixel = document.createElement("div");
-        pixel.setAttribute("class", "pixel");
-        container.appendChild(pixel);
+    //calculate pixel dimension
+    let pixelDimension = container.offsetHeight / gridDimension - 2.3;
+    pixelDimension += "px";
+    console.log(`pixel dimension is ${pixelDimension}`);//
+
+    //create row
+    for (let i = 1 ; i <= gridDimension; ++i) {
+        let row = document.createElement("div");
+        row.setAttribute("class", "row");
+        row.style.setProperty("display", "flex");
+        row.style.setProperty("justify-content", "space-between")
+        container.appendChild(row);
+
+        //add pixels to row
+        for (let i = 1; i <= gridDimension; ++i) {
+            let pixel = document.createElement("div");
+            pixel.setAttribute("class", "pixel");
+            pixel.style.setProperty("height", pixelDimension);
+            pixel.style.setProperty("width", pixelDimension);
+            row.appendChild(pixel);
+            pixel.textContent = "px";
+            
         }
+    }
 });
