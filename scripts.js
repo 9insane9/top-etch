@@ -8,7 +8,7 @@ let allRows;
 let allPixels;
 
 gridSizeButton.addEventListener('click', () => {
-    let gridDimension = prompt("Enter grid dimensions", "20");
+    let gridDimension = prompt("Enter grid dimensions", "100");
 
     if (gridDimension > 100) {
         alert("you interplanetary goat, try a lower number");
