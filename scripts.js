@@ -4,6 +4,9 @@ let row;
 let pixel;
 let grid = false;
 
+let allRows;
+let allPixels;
+
 gridSizeButton.addEventListener('click', () => {
     let gridDimension = prompt("Enter grid dimensions", "20");
 
@@ -11,14 +14,11 @@ gridSizeButton.addEventListener('click', () => {
         alert("you interplanetary goat, try a lower number");
     } else {
         //calculate pixel dimension
-        let pixelDimension = container.offsetHeight / gridDimension - 2.3;
+        let pixelDimension = container.offsetHeight / gridDimension;
         pixelDimension += "px";
         console.log(`pixel dimension is ${pixelDimension}`);//
 
-        if (grid) { //delete old grid if one already exists
-            let allRows = document.querySelectorAll(".row");
-            let allPixels = document.querySelectorAll(".pixel");
-            
+        if (grid) { //delete old grid if one already exists                        
             allPixels.forEach((element) => {
                 element.remove();
             })
@@ -28,17 +28,12 @@ gridSizeButton.addEventListener('click', () => {
             })
         }
         
-        for (let i = 1 ; i <= gridDimension; ++i) {  //create row
-            
+        for (let i = 1 ; i <= gridDimension; ++i) {  //create row            
             row = document.createElement("div");
             row.setAttribute("class", "row");
-            row.style.setProperty("display", "flex");
-            row.style.setProperty("justify-content", "space-between")
             container.appendChild(row);
-            
-
-            //add pixels to row
-            for (let i = 1; i <= gridDimension; ++i) {
+                        
+            for (let i = 1; i <= gridDimension; ++i) { //add pixels to row
                 pixel = document.createElement("div");
                 pixel.setAttribute("class", "pixel");
                 pixel.style.setProperty("height", pixelDimension);
@@ -47,5 +42,11 @@ gridSizeButton.addEventListener('click', () => {
             }
         }
         grid = true;
+        allRows = document.querySelectorAll(".row");
+        allPixels = document.querySelectorAll(".pixel");
+
+        allPixels.forEach((pixel) => pixel.addEventListener("mouseover", (element) => {
+            pixel.setAttribute("class", "color1");
+        }))
     }
 });
