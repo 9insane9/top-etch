@@ -9,11 +9,11 @@ html {
 } */
 
 .container {
-    border: 2px solid red;
+    border: 1px solid red;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
+    /* justify-content: space-evenly;
+    align-items: center; */
     margin: 0px auto;
     height: 80vh;
     width: 80vh;
@@ -26,9 +26,13 @@ html {
     flex-basis: 0; */
 }
 
+.color1 {
+    background-color: black;
+}
+
 .grid-size-button {
     margin: 20px;
     height: 50px;
     width: 150px;
-
 }
+
